@@ -1,25 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
   title: "Power Fusion | Electrical Contractor & Engineering Services in Karachi",
-  description: "Power Fusion provides top-tier electrical construction, testing, commissioning, and maintenance services across Sindh. Industrial, residential, commercial & educational projects.",
+  description:
+    "Power Fusion provides top-tier electrical construction, testing, commissioning, and maintenance services across Sindh. Industrial, residential, commercial & educational projects.",
   keywords: [
     "Electrical Contractor Karachi",
     "Industrial Engineering Services",
@@ -35,6 +39,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -43,9 +48,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${plexSans.variable} ${plexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-white">{children}</body>
     </html>
   );
 }

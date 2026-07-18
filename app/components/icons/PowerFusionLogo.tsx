@@ -1,177 +1,106 @@
-/**
- * Power Fusion — Primary Logo
- *
- * A high-voltage transformer icon with integrated lightning bolt,
- * rendered as an inline SVG for crisp display at any resolution.
- *
- * Props:
- *   - width / height  → override default sizing
- *   - className        → Tailwind or custom classes
- *   - showText         → render the "POWER FUSION" wordmark below the icon
- *   - variant          → "full" (icon + text) | "icon" (icon only) | "text" (text only)
- */
+import React from "react";
 
-import { type SVGProps } from "react";
-
-interface PowerFusionLogoProps extends SVGProps<SVGSVGElement> {
-  showText?: boolean;
-  variant?: "full" | "icon" | "text";
+interface PowerFusionLogoProps {
+  className?: string;
+  width?: number | string;
+  height?: number | string;
 }
 
+/**
+ * Power Fusion Logo Component
+ * 
+ * Features an abstract transformer core with dynamic wrapped coils,
+ * a central lightning bolt, and a two-tone flat-design shading system.
+ */
 export default function PowerFusionLogo({
-  showText = true,
-  variant = "full",
-  width,
-  height,
-  className,
-  ...rest
+  className = "",
+  width = "100%",
+  height = "auto",
 }: PowerFusionLogoProps) {
-  const showIcon = variant === "full" || variant === "icon";
-  const showWordmark = variant === "full" || variant === "text";
-
-  // Dimensions adapt to the variant
-  const vbWidth = 200;
-  const vbHeight = showWordmark ? 90 : 60;
-
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox={`0 0 ${vbWidth} ${vbHeight}`}
-      width={width ?? (showWordmark ? 200 : 60)}
-      height={height ?? (showWordmark ? 90 : 60)}
-      fill="none"
+      viewBox="0 0 680 200"
+      width={width}
+      height={height}
       className={className}
       aria-label="Power Fusion Logo"
       role="img"
-      {...rest}
     >
-      <defs>
-        {/* Gold gradient for the transformer body */}
-        <linearGradient id="pf-gold" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#E8C468" />
-          <stop offset="100%" stopColor="#D4A843" />
-        </linearGradient>
+      <title>Power Fusion</title>
 
-        {/* Navy gradient for the shield / background */}
-        <linearGradient id="pf-navy" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#162D50" />
-          <stop offset="100%" stopColor="#0A1628" />
-        </linearGradient>
+      {/* --- ICON GROUP --- */}
+      <g transform="translate(10, 0)">
+        
+        {/* 1. Transformer Core Outer Frame (Dark Blue) */}
+        {/* Left Column */}
+        <rect x="30" y="45" width="30" height="110" fill="#154a78" />
+        {/* Right Column */}
+        <rect x="140" y="45" width="30" height="110" fill="#154a78" />
+        {/* Top Connector */}
+        <rect x="30" y="45" width="140" height="25" fill="#154a78" />
+        {/* Bottom Connector */}
+        <rect x="30" y="130" width="140" height="25" fill="#154a78" />
 
-        {/* Electric glow filter */}
-        <filter id="pf-glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="1.5" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
+        {/* 2. Central Transformer Pillar (Two-Tone Shading) */}
+        {/* Left Half (Lighter Blue) */}
+        <rect x="85" y="20" width="15" height="160" fill="#1d6ca3" />
+        {/* Right Half (Dark Blue) */}
+        <rect x="100" y="20" width="15" height="160" fill="#154a78" />
 
-      {showIcon && (
-        <g transform={`translate(${showWordmark ? 70 : 0}, 0)`}>
-          {/* ── Shield / Badge Background ── */}
-          <path
-            d="M30 2 L56 10 L56 35 Q56 50 30 58 Q4 50 4 35 L4 10 Z"
-            fill="url(#pf-navy)"
-            stroke="#D4A843"
-            strokeWidth="1.5"
-          />
+        {/* 3. Outer Coils (Vibrant Green) */}
+        <g
+          stroke="#5aab4e"
+          strokeWidth="6.5"
+          strokeLinecap="round"
+          fill="none"
+        >
+          {/* Left Side Coils */}
+          <line x1="18" y1="55" x2="72" y2="59" />
+          <line x1="18" y1="70" x2="72" y2="74" />
+          <line x1="18" y1="85" x2="72" y2="89" />
+          <line x1="18" y1="100" x2="72" y2="104" />
+          <line x1="18" y1="115" x2="72" y2="119" />
+          <line x1="18" y1="130" x2="72" y2="134" />
+          <line x1="18" y1="145" x2="72" y2="149" />
 
-          {/* ── Transformer Body ── */}
-          {/* Core / vertical rectangle */}
-          <rect
-            x="22"
-            y="14"
-            width="16"
-            height="28"
-            rx="2"
-            fill="url(#pf-gold)"
-            opacity="0.9"
-          />
-
-          {/* Top bushing */}
-          <rect x="26" y="9" width="8" height="7" rx="1" fill="#E8C468" />
-          <line x1="30" y1="6" x2="30" y2="10" stroke="#D4A843" strokeWidth="2" strokeLinecap="round" />
-
-          {/* Primary winding (left) */}
-          <path
-            d="M19 18 Q14 20 14 24 Q14 28 19 30"
-            stroke="#E8C468"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-          />
-          <path
-            d="M17 16 Q10 19 10 24 Q10 29 17 32"
-            stroke="#D4A843"
-            strokeWidth="1.5"
-            fill="none"
-            strokeLinecap="round"
-          />
-
-          {/* Secondary winding (right) */}
-          <path
-            d="M41 18 Q46 20 46 24 Q46 28 41 30"
-            stroke="#E8C468"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-          />
-          <path
-            d="M43 16 Q50 19 50 24 Q50 29 43 32"
-            stroke="#D4A843"
-            strokeWidth="1.5"
-            fill="none"
-            strokeLinecap="round"
-          />
-
-          {/* Base plate */}
-          <rect x="18" y="42" width="24" height="4" rx="1" fill="#D4A843" />
-          {/* Base legs */}
-          <rect x="20" y="46" width="4" height="5" rx="1" fill="#B8922F" />
-          <rect x="36" y="46" width="4" height="5" rx="1" fill="#B8922F" />
-
-          {/* ── Lightning Bolt (center of transformer) ── */}
-          <path
-            d="M32 17 L27 26 L31 26 L28 36 L36 24 L32 24 L35 17 Z"
-            fill="#FFFFFF"
-            filter="url(#pf-glow)"
-          />
+          {/* Right Side Coils */}
+          <line x1="128" y1="55" x2="182" y2="59" />
+          <line x1="128" y1="70" x2="182" y2="74" />
+          <line x1="128" y1="85" x2="182" y2="89" />
+          <line x1="128" y1="100" x2="182" y2="104" />
+          <line x1="128" y1="115" x2="182" y2="119" />
+          <line x1="128" y1="130" x2="182" y2="134" />
+          <line x1="128" y1="145" x2="182" y2="149" />
         </g>
-      )}
 
-      {/* ── Wordmark ── */}
-      {showWordmark && (
-        <g>
-          {/* "POWER" in gold */}
-          <text
-            x={showIcon ? 100 : 100}
-            y={showIcon ? 72 : 30}
-            textAnchor="middle"
-            fontFamily="Inter, Arial, sans-serif"
-            fontWeight="800"
-            fontSize="16"
-            letterSpacing="3"
-            fill="#D4A843"
-          >
-            POWER
-          </text>
-          {/* "FUSION" in white */}
-          <text
-            x={showIcon ? 100 : 100}
-            y={showIcon ? 86 : 48}
-            textAnchor="middle"
-            fontFamily="Inter, Arial, sans-serif"
-            fontWeight="300"
-            fontSize="14"
-            letterSpacing="5"
-            fill="#FFFFFF"
-          >
-            FUSION
-          </text>
-        </g>
-      )}
+        {/* 4. Center Lightning Bolt (Brand Orange) */}
+        {/* Includes a white stroke to create a negative-space "cutout" effect over the core */}
+        <path
+          d="M 125 35 L 75 110 L 105 110 L 80 170 L 130 95 L 100 95 Z"
+          fill="#fb9522"
+          stroke="#ffffff"
+          strokeWidth="5"
+          strokeLinejoin="round"
+        />
+      </g>
+
+      {/* --- TYPOGRAPHY GROUP --- */}
+      {/* 
+        Using system sans-serif fonts to ensure perfect crispness and weight 
+        without requiring external font files to load.
+      */}
+      <text
+        x="220"
+        y="118"
+        fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        fontWeight="800"
+        fontSize="56"
+        letterSpacing="-0.5"
+      >
+        <tspan fill="#154a78">POWER</tspan>
+        <tspan fill="#fb9522" dx="14">FUSION</tspan>
+      </text>
     </svg>
   );
 }

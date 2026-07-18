@@ -12,6 +12,7 @@
  * │               Commissioning, Maintenance         │
  * │  Commitment → 24Hour, Warranty, Quality          │
  * │  UI         → Phone, Email, Location, Menu, etc. │
+ * │  Interaction→ Plus (panel-schedule expand toggle)│
  * │  Social     → WhatsApp, LinkedIn, Facebook       │
  * └──────────────────────────────────────────────────┘
  *
@@ -32,6 +33,9 @@ export { default as IconMaintenance } from "./IconMaintenance";
 export { default as Icon24Hour } from "./Icon24Hour";
 export { default as IconWarranty } from "./IconWarranty";
 export { default as IconQuality } from "./IconQuality";
+
+// ── Interaction Icons ──
+export { default as IconPlus } from "./IconPlus";
 
 // ── General UI Icons ──
 export {

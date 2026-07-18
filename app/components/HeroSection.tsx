@@ -12,8 +12,13 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    // brackets ke bahar 'as const' add kar dein
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } 
+  }
 };
 
 export default function HeroSection() {

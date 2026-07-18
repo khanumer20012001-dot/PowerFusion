@@ -4,6 +4,7 @@ interface PowerFusionLogoProps {
   className?: string;
   width?: number | string;
   height?: number | string;
+  variant?: string;
 }
 
 /**

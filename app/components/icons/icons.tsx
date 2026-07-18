@@ -20,7 +20,7 @@ import {
   CircleCheck,
   type LucideIcon,
 } from "lucide-react";
-import { SiWhatsapp, SiLinkedin, SiFacebook } from "react-icons/si";
+import { FaWhatsapp, FaLinkedin, FaFacebook } from "react-icons/fa";
 import type { IconType } from "react-icons";
 
 /**
@@ -69,9 +69,9 @@ export const IconCommissioning = fromLucide(ClipboardCheck);
 export const IconMaintenance = fromLucide(Wrench);
 
 /* ---------------- Brand / social icons (react-icons/si) ---------------- */
-export const IconWhatsApp = fromSimpleIcons(SiWhatsapp);
-export const IconLinkedIn = fromSimpleIcons(SiLinkedin);
-export const IconFacebook = fromSimpleIcons(SiFacebook);
+export const IconWhatsApp = fromSimpleIcons(FaWhatsapp);
+export const IconLinkedIn = fromSimpleIcons(FaLinkedin);
+export const IconFacebook = fromSimpleIcons(FaFacebook);
 
 /* ---------------- Logo ---------------- */
 interface LogoProps {
